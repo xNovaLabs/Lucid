@@ -11,6 +11,7 @@ async function setTransport() {
 }
 
 async function proxy(url) {
+    await regSW();
     await setTransport();
     var urle = "https://" + document.domain + __uv$config.prefix + __uv$config.encodeUrl(search(url, "https://www.google.com/search?q=%s" ));
     win = window.open();
@@ -21,6 +22,7 @@ async function proxy(url) {
     iframe.style.width = '100%';
     iframe.style.height = '100%';
     iframe.style.margin = '0';
+    await setTransport();
     iframe.src = urle;
     win.document.body.appendChild(iframe)
     window.location.href = "https://google.com"
