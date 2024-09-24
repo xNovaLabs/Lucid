@@ -11,10 +11,15 @@ async function setTransport() {
 }
 
 async function proxy(url) {
-    const uvUrl = __uv$config.prefix  + __uv$config.encodeUrl( search(url, "https://www.google.com/search?q=%s" )) 
+    const iframe = document.getElementById("frame");
+    const uvUrl = __uv$config.prefix  + __uv$config.encodeUrl( search(url, "https://www.google.com/search?q=%s" ))
     await setTransport();
-    window.location.href = uvUrl
+    iframe.classList.remove("xframe");
+    iframe.src = uvUrl;
 }
+
+
+
 
 function search(key , template ) {
     try {

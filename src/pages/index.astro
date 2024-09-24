@@ -27,4 +27,25 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     }
   });
   </script>
+  <style>
+    #frame {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                background: black;
+                outline: none;
+                border: none;
+    }
+
+    .xframe {
+                display: none;
+                visibility: hidden;
+                width: 0%;
+                height: 0%;
+            }
+  </style>
+  <iframe id="frame" class="xframe"></iframe>
+
 </BaseLayout>
