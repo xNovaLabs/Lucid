@@ -1,0 +1,20 @@
+---
+import "../global.css"
+import Navbar from '../components/Navbar.astro'
+const {title} = Astro.props;
+---
+
+<html lang="en" data-theme="luxury">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <script is:inline src="uv/uv.bundle.js" defer></script>
+    <script is:inline src="uv/uv.config.js" defer></script>
+    <script is:inline src="baremux/index.js" defer></script>
+  </head>
+  <body>
+    <Navbar></Navbar>
+    <slot />
+  </body>
+</html>
