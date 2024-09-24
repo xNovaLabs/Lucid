@@ -11,23 +11,11 @@ async function setTransport() {
 }
 
 async function proxy(url) {
-    await regSW();
+    const uvUrl = __uv$config.prefix  + __uv$config.encodeUrl( search(url, "https://www.google.com/search?q=%s" )) 
     await setTransport();
-    var urle = "https://" + document.domain + __uv$config.prefix + __uv$config.encodeUrl(search(url, "https://www.google.com/search?q=%s" ));
-    win = window.open();
-    win.document.body.style.margin = '0';
-    win.document.body.style.height = '100vh';
-    var iframe = win.document.createElement('iframe');
-    iframe.style.border = 'none';
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    iframe.style.margin = '0';
-    await setTransport();
-    iframe.src = urle;
-    win.document.body.appendChild(iframe)
-    window.location.href = "https://google.com"
-
+    window.location.href = uvUrl
 }
+
 function search(key , template ) {
     try {
         return new URL(key).toString();
