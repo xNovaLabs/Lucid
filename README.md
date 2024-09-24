@@ -1,4 +1,4 @@
 ### Lucid
 
-astro build
-node index.mjs
+```astro build```
+```node index.mjs```
