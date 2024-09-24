@@ -12,7 +12,7 @@ async function setTransport() {
 
 async function proxy(url) {
     await setTransport();
-    var urle = "http://" + document.domain + ":8080" + __uv$config.prefix + __uv$config.encodeUrl(search(url, "https://www.google.com/search?q=%s" ));
+    var urle = "https://" + document.domain + __uv$config.prefix + __uv$config.encodeUrl(search(url, "https://www.google.com/search?q=%s" ));
     win = window.open();
     win.document.body.style.margin = '0';
     win.document.body.style.height = '100vh';
