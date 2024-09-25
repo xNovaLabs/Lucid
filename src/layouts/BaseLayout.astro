@@ -2,10 +2,47 @@
 import "../global.css"
 import Navbar from '../components/Navbar.astro'
 const {title} = Astro.props;
+
 ---
 
 <html lang="en" data-theme="luxury">
   <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta content="1.0.10" name="version" />
+    
+    <meta name="googlebot" content="index, follow, snippet" />
+    <link rel="canonical" href="https://luhtrissy.com/" />
+    
+    <meta name="description" content="Lucid is a secure web prxy service with support for many sites. bi filters and freely enjoy a safer private browsing experience or unblook websites on devices such as Chromebooks and at places like school or work without downloading anything."
+    />
+
+    <meta property="og:site_name" content="Lucid">
+    <meta property="og:url" content="https://luhtrissy.com/">
+    <meta property="og:title" content="Lucid">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Lucid is a web prxy service that helps you access websites that may be blocked by your network or browser. It does this securely and with additional features.">
+    <meta property="og:image" content="/img/embedthingy.png">
+    <meta property="og:image:secure_url" content="/img/embedthingy.png">
+    <meta property="twitter:image" content="/img/embedthingy_alt.jpg">
+    <meta name="twitter:site" content="@NovaLabs">
+    <meta name="twitter:creator" content="@NovaLabs">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lucid">
+    <meta name="twitter:description" content="Lucid, a nova labs project, can bipass web filters regardless of whether it is an extension or network-based. Being a secure web prxy service, it supports numerous sites while being updated frequently and concentrating on detail with design, mechanics, and features.">
+    
+
+</head>
+
+    <!-- Google Tag Manager -->
+    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TW2X8ZTS');
+    </script>
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
@@ -14,6 +51,10 @@ const {title} = Astro.props;
     <script is:inline src="baremux/index.js" defer></script>
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TW2X8ZTS"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <Navbar></Navbar>
     <slot />
   </body>
