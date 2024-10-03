@@ -11,10 +11,7 @@ async function setTransport() {
 }
 
 async function proxy(url) {
-    const iframe = document.getElementById("frame");
     const uvUrl = __uv$config.prefix  + __uv$config.encodeUrl( search(url, "https://www.google.com/search?q=%s" ))
-    console.log(uvUrl)
-    await regSW();
     await setTransport();
     window.location.href = window.location.href + uvUrl.substring(1);
 }
