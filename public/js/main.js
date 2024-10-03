@@ -11,11 +11,18 @@ async function setTransport() {
 }
 
 async function proxy(url) {
+    const iframe = document.getElementById("frame");
+    const uvUrl = __uv$config.prefix  + __uv$config.encodeUrl( search(url, "https://www.google.com/search?q=%s" ))
     await setTransport();
-    location.href = "/portal?frame=" + search(url, "https://www.google.com/search?q=%s")
+    iframe.classList.remove("xframe");
+    iframe.src = uvUrl;
 }
 
 
+function hidealert() {
+    const alert = document.getElementById("alertx");
+    alert.classList.add("alertx");
+}
 
 
 function search(key , template ) {
@@ -27,12 +34,5 @@ function search(key , template ) {
         if (url.hostname.includes('.')) return url.toString();
     } catch (error) {  }
     return template.replace("%s", encodeURIComponent(key));
-}
-
-
-
-function hidealert() {
-    const alert = document.getElementById("alertx");
-    alert.classList.add("alertx");
 }
 
