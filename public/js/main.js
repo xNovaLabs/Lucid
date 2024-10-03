@@ -19,6 +19,10 @@ async function proxy(url) {
 }
 
 
+function hidealert() {
+    const alert = document.getElementById("alertx");
+    alert.classList.add("alertx");
+}
 
 
 function search(key , template ) {

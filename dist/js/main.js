@@ -6,7 +6,7 @@ async function regSW() {
 }
 async function setTransport() {
     const conn = new BareMux.BareMuxConnection("/baremux/worker.js");
-    const wispUrl = (location.protocol === "https:" ? "wss://" : "ws://") + "wisp.novalabs.app";
+    const wispUrl = (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/wisp/";
     await conn.setTransport("/epoxy/index.mjs", [{ wisp: wispUrl  }]);
 }
 
@@ -16,6 +16,12 @@ async function proxy(url) {
     await setTransport();
     iframe.classList.remove("xframe");
     iframe.src = uvUrl;
+}
+
+
+function hidealert() {
+    const alert = document.getElementById("alertx");
+    alert.classList.add("alertx");
 }
 
 
