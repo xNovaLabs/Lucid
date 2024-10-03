@@ -11,16 +11,14 @@ async function setTransport() {
 }
 
 async function proxy(url) {
+    const iframe = document.getElementById("frame");
     const uvUrl = __uv$config.prefix  + __uv$config.encodeUrl( search(url, "https://www.google.com/search?q=%s" ))
     await setTransport();
-    window.location.href = window.location.href + uvUrl.substring(1);
+    iframe.classList.remove("xframe");
+    iframe.src = uvUrl;
 }
 
 
-function hidealert() {
-    const alert = document.getElementById("alertx");
-    alert.classList.add("alertx");
-}
 
 
 function search(key , template ) {
@@ -33,4 +31,12 @@ function search(key , template ) {
     } catch (error) {  }
     return template.replace("%s", encodeURIComponent(key));
 }
+
+
+
+function hidealert() {
+    const alert = document.getElementById("alertx");
+    alert.classList.add("alertx");
+}
+
 
