@@ -1,7 +1,6 @@
 import http from 'node:http';
 import express from 'express';
 import path from 'node:path';
-import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 
@@ -12,7 +11,6 @@ const port = 8080;
 
 app.use(express.static(path.join(import.meta.dirname, "dist" )));
 
-app.use("/uv", express.static(uvPath));
 app.use("/baremux/", express.static(baremuxPath));
 app.use("/epoxy/", express.static(epoxyPath));
 
