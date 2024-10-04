@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+
+---
+
+<BaseLayout title="Player">
+  <div class="hero min-h-screen bg-base-200">
+    <script is:inline>
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        console.log(params['url'])
+    </script>
+    <div style='width:640px;height:480px;max-width:100%'>
+        <div id='game'></div>
+    </div>
+        <embed src="" width="1000" height="625" id="player"/>
+        <iframe src="" width="1000" height="625" id="frame" />
+
+
+    
+    <script is:inline src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script is:inline>
+        if (params['type'] == "flash"){
+            const embed = document.getElementById('player')
+            var clone = embed.cloneNode(true)
+            clone.setAttribute('src', params['url'])
+            clone.setAttribute('width', params['width'])
+            clone.setAttribute('height', params['height'])
+            embed.parentNode.replaceChild(clone, embed)
+        } else if (params['type'] == 'emulator'){
+            EJS_player = "#game";
+            EJS_core = params['core'];
+            EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+            EJS_gameUrl = params['url'];
+        } else if (params['type'] == 'html'){
+            const iframe = document.getElementById('frame')
+            var clonex = iframe.cloneNode(true)
+            clonex.setAttribute('src', params['url'])
+            clonex.setAttribute('width', params['width'])
+            clonex.setAttribute('height', params['height'])
+            iframe.parentNode.replaceChild(clonex, iframe)
+        }
+        
+    </script>
+    <script is:inline src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+</div>
+ 
+</BaseLayout>

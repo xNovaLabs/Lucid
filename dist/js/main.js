@@ -6,14 +6,16 @@ async function regSW() {
 }
 async function setTransport() {
     const conn = new BareMux.BareMuxConnection("/baremux/worker.js");
-    const wispUrl = (location.protocol === "https:" ? "wss://" : "ws://") + "wisp.novalabs.app";
+    const wispUrl = (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/wisp/";
     await conn.setTransport("/epoxy/index.mjs", [{ wisp: wispUrl  }]);
 }
 
 async function proxy(url) {
+    const iframe = document.getElementById("frame");
     const uvUrl = __uv$config.prefix  + __uv$config.encodeUrl( search(url, "https://www.google.com/search?q=%s" ))
     await setTransport();
-    window.location.href = window.location.href + uvUrl.substring(1);
+    iframe.classList.remove("xframe");
+    iframe.src = uvUrl;
 }
 
 

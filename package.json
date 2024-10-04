@@ -11,6 +11,7 @@
     "tailwindcss": "^3.3.3"
   },
   "dependencies": {
+    "@astrojs/node": "^8.3.4",
     "@mercuryworkshop/bare-mux": "^2.0.9",
     "@mercuryworkshop/epoxy-transport": "^2.1.11",
     "@titaniumnetwork-dev/ultraviolet": "^3.2.7",
