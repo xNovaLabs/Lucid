@@ -3714,8 +3714,10 @@ const appMethods = () => {
         } else {
             type = 'emulator';
             appData.source =  "/games" + appData.source ;
-            console.log(appData.source)
+            
         }
+        appData.source = window.location + "/cdn" + appData.source;
+        console.log(appData.source)
         console.log("hi")
         const appListing = document.createElement("div");
         appListing.classList.add("card")
@@ -3726,7 +3728,7 @@ const appMethods = () => {
             <h2 class="card-title">${appData.title}</h2>
                 <p>${appData.description}</p>
                 <div class="card-actions justify-end">
-                <button class="btn btn-primary" onclick="window.location.href='/player/?url=https://rawcdn.githack.com/delusionzz/cdn/8060552f9685083d084562d35c1de40406487a89/public${appData.source}&type=${type}&core=${appData.gameType}&width=${appData.width}&height=${appData.height}'">Launch</button>
+                <button class="btn btn-primary" onclick="window.location.href='/player/?url=${appData.source}&type=${type}&core=${appData.gameType}&width=${appData.width}&height=${appData.height}'">Launch</button>
             </div>
             </div>
             </div>
