@@ -1,6 +1,6 @@
 ---
 import "../global.css"
-import Navbar from '../components/Navbar.astro'
+import Navbar from '../components/navebar.astro'
 const {title} = Astro.props;
 
 ---
@@ -39,9 +39,6 @@ const {title} = Astro.props;
     <meta name="twitter:description" content="Lucid, a nova labs project, can bipass web filters regardless of whether it is an extension or network-based. Being a secure web prxy service, it supports numerous sites while being updated frequently and concentrating on detail with design, mechanics, and features.">
 
     <title>{title}</title>
-    <script is:inline src="./uv/uv.bundle.js" defer></script>
-    <script is:inline src="./uv/uv.config.js" defer></script>
-    <script is:inline src="./baremux/index.js" defer></script>
   </head>
   <body>
     <Navbar></Navbar>
