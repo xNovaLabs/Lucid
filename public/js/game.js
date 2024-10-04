@@ -3716,7 +3716,7 @@ const appMethods = () => {
             appData.source =  "/games" + appData.source ;
             
         }
-        appData.source = window.location.hostname + "cdn" + appData.source;
+        appData.source = window.location.hostname + "/cdn" + appData.source;
         console.log(appData.source)
         console.log("hi")
         const appListing = document.createElement("div");
