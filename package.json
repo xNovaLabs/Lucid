@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/node": "^8.3.4",
     "@mercuryworkshop/bare-mux": "^2.0.9",
-    "@mercuryworkshop/epoxy-transport": "^2.1.11",
+    "@mercuryworkshop/epoxy-transport": "^2.1.13",
     "@titaniumnetwork-dev/ultraviolet": "^3.2.7",
     "express": "^4.21.0",
     "sonner": "^1.5.0",
