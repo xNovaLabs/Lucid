@@ -36,3 +36,7 @@ function search(key , template ) {
     return template.replace("%s", encodeURIComponent(key));
 }
 
+
+function buttonRedir(url) {
+    proxy(url)
+}
