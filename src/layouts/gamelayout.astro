@@ -50,6 +50,57 @@ const {title} = Astro.props;
     
         gtag('config', 'G-JFZH1EF8EG');
       </script>
+<script is:inline>
+  const presetOptions = {
+      google: {
+        title: "Google",
+        icon: "https://www.google.com/favicon.ico"
+      },
+      googleDrive: {
+        title: "Google Drive",
+        icon: "https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico"
+      },
+      canvas: {
+        title: "Canvas",
+        icon: "https://canvas.instructure.com/favicon.ico"
+      }
+    };
+    
+  function setTabCloaking(title, icon) {
+      document.title = title;
+    
+      let link = document.querySelector("link[rel~='icon']");
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.getElementsByTagName('head')[0].appendChild(link);
+      }
+      link.href = icon;
+  }
+    
+    function saveCloakingSettings(title, icon) {
+      localStorage.setItem('tabCloakTitle', title);
+      localStorage.setItem('tabCloakIcon', icon);
+    }
+    
+    function applySavedCloakingSettings() {
+      const savedTitle = localStorage.getItem('tabCloakTitle');
+      const savedIcon = localStorage.getItem('tabCloakIcon');
+      if (savedTitle && savedIcon) {
+        setTabCloaking(savedTitle, savedIcon);
+      }
+    }
+    
+    function handlePanic(panicUrl) {
+      window.location.href = panicUrl;
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      applySavedCloakingSettings();
+    
+    
+    });
+    </script>
   <body>
     <Navbar></Navbar>
     <slot />

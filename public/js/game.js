@@ -3703,8 +3703,10 @@ const list = [
 
 ]
 const appcontainer = document.getElementById("appcontainer");
+const searchBar = document.getElementById("search-bar");
 
-const appMethods = () => {
+const appMethods = (searchQuery = "") => {
+    appcontainer.innerHTML = ''; 
     list.map((appData) => {
         var type = "html"
         if (appData.gameType.includes("flash")) {
@@ -3713,38 +3715,34 @@ const appMethods = () => {
             type = 'html';
         } else {
             type = 'emulator';
-            appData.source =  "/games" + appData.source ;
-            
+            appData.source =  "/games" + appData.source;
         }
         appData.source = "https://" + window.location.hostname + "/cdn" + appData.source;
-        console.log(appData.source)
-        console.log("hi")
-        const appListing = document.createElement("div");
-        appListing.classList.add("card")
-        appListing.innerHTML =  `
-            <div class="h-full p-12 flex items-stretch">
-            <div class="card bg-base-100 w-96 shadow-xl">
-            <div class="card-body">
-            <h2 class="card-title">${appData.title}</h2>
-                <p>${appData.description}</p>
-                <div class="card-actions justify-end">
-                <button class="btn btn-primary" onclick="window.location.href='/player/?url=${appData.source}&type=${type}&core=${appData.gameType}&width=${appData.width}&height=${appData.height}'">Launch</button>
-            </div>
-            </div>
-            </div>
-            </div>
 
+        if (appData.listed && appData.title.toLowerCase().includes(searchQuery.toLowerCase())) {
+            const appListing = document.createElement("div");
+            appListing.classList.add("card");
+            appListing.innerHTML = `
+                <div class="h-full p-12 flex items-stretch">
+                <div class="card bg-base-100 w-96 shadow-xl">
+                <div class="card-body">
+                <h2 class="card-title">${appData.title}</h2>
+                    <p>${appData.description}</p>
+                    <div class="card-actions justify-end">
+                    <button class="btn btn-primary" onclick="window.location.href='/player/?url=${appData.source}&type=${type}&core=${appData.gameType}&width=${appData.width}&height=${appData.height}'">Launch</button>
+                </div>
+                </div>
+                </div>
+                </div>
+            `;
+            appcontainer.appendChild(appListing);
+        }
+    });
+};
 
-         `;
+searchBar.addEventListener("input", (e) => {
+    const searchQuery = e.target.value;
+    appMethods(searchQuery);
+});
 
-         if (appData.listed == true) {
-            appcontainer?.appendChild(appListing);
-         }
-
-         
-    })
-}
-
-
-    
-appMethods();
+appMethods(); 

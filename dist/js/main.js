@@ -6,7 +6,7 @@ async function regSW() {
 }
 async function setTransport() {
     const conn = new BareMux.BareMuxConnection("/baremux/worker.js");
-    const wispUrl = (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/wisp/";
+    const wispUrl = (location.protocol === "https:" ? "wss://" : "ws://") + "wisp.novalabs.app";
     await conn.setTransport("/epoxy/index.mjs", [{ wisp: wispUrl  }]);
 }
 
@@ -40,3 +40,5 @@ function search(key , template ) {
 function buttonRedir(url) {
     proxy(url)
 }
+
+
